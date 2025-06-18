@@ -1,5 +1,6 @@
 最简单的环境配置（仅限python）
 在本项目中仅需在项目根目录执行 source exp_venv/bin/activate 
+
 venv（Python 标准库）
 这是 Python 自带的虚拟环境工具，从 Python 3.3 开始作为标准库的一部分。它的使用非常简单，适合一般的 Python 项目。
 
