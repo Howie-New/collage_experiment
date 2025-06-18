@@ -1,0 +1,21 @@
+# 音频降噪项目依赖包
+# 核心科学计算库
+numpy>=1.21.0
+scipy>=1.7.0
+
+# 绘图和可视化
+matplotlib>=3.5.0
+
+# 音频处理
+soundfile>=0.10.0
+sounddevice>=0.4.0
+
+# 可选依赖（用于更好的性能）
+# 如果安装失败，可以注释掉这些行
+# numba>=0.56.0  # 用于加速计算
+# pyfftw>=0.13.0  # 用于更快的FFT
+
+# 系统依赖（需要在系统级别安装）
+# Ubuntu/Debian: sudo apt-get install portaudio19-dev
+# CentOS/RHEL: sudo yum install portaudio-devel
+# macOS: brew install portaudio 
