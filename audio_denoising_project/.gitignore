@@ -21,6 +21,13 @@ wheels/
 *.egg
 MANIFEST
 
+# venv
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
 # PyInstaller
 *.manifest
 *.spec
