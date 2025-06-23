@@ -148,17 +148,32 @@ class AudioDenoisingProcessor:
     def save_audio_files(self):
         """保存音频文件"""
         print("正在保存音频文件...")
-        
+
+        # 保存原始音频
+        try:
+            sf.write(f"{self.output_dirs['noisy']}/original.wav",
+                     self.audio_data.astype(np.float32), self.sample_rate)
+        except Exception as e:
+            print(f"保存原始音频失败: {e}")
+
         # 保存带噪音频
         for noise_type, noisy_signal in self.noisy_signals.items():
-            sf.write(f"{self.output_dirs['noisy']}/{noise_type}_noisy.wav", 
-                    noisy_signal, self.sample_rate)
-        
+            if noisy_signal is not None and len(noisy_signal) > 0:
+                try:
+                    sf.write(f"{self.output_dirs['noisy']}/{noise_type}_noisy.wav",
+                             noisy_signal.astype(np.float32), self.sample_rate)
+                except Exception as e:
+                    print(f"保存{noise_type}噪声音频失败: {e}")
+
         # 保存滤波后音频
         for noise_type, filtered_signal in self.filtered_signals.items():
-            sf.write(f"{self.output_dirs['filtered']}/{noise_type}_filtered.wav", 
-                    filtered_signal, self.sample_rate)
-        
+            if filtered_signal is not None and len(filtered_signal) > 0:
+                try:
+                    sf.write(f"{self.output_dirs['filtered']}/{noise_type}_filtered.wav",
+                             filtered_signal.astype(np.float32), self.sample_rate)
+                except Exception as e:
+                    print(f"保存{noise_type}滤波后音频失败: {e}")
+
         print("音频文件保存完成")
     
     def play_audio_comparison(self):
@@ -210,4 +225,4 @@ def main():
         app.run()
 
 if __name__ == "__main__":
-    main() 
+    main()
